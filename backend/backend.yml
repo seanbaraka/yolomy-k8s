@@ -16,7 +16,7 @@ spec:
         - name: backend
           image: riot3a/yolo-backend:v2.0.0
           ports:
-            - containerPort: 3000
+            - containerPort: 5000
           env:
             - name: MONGODB_URI
               valueFrom:
