@@ -2,10 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
-  labels:
-    app: backend
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: backend
@@ -16,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: riot3a/yolo-backend:v1.0.0
+          image: riot3a/yolo-backend:v2.0.0
           ports:
             - containerPort: 3000
           env:

@@ -16,13 +16,25 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: riot3a/yolo-client:v1.0.0
+          image: riot3a/yolo-client:v2.0.0
           ports:
             - containerPort: 80
           resources:
             requests:
-              memory: "32Mi"
-              cpu: "100m"
+              cpu: "50m" # Reduced CPU request
+              memory: "128Mi"
             limits:
-              memory: "64Mi"
-              cpu: "200m"
+              cpu: "100m" # Reduced CPU limit
+              memory: "256Mi"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 20
